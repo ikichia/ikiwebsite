@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OwnerForm } from "@/components/owner-form";
+import { MortgageCalculator } from "@/components/mortgage-calculator";
 import { NextSixListings } from "@/components/nextsix-listings";
 import { PropertyGrid, SearchForm } from "@/components/property";
 import { PropertyTypeCards } from "@/components/property-type-cards";
@@ -70,6 +71,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </g>
         </svg>
       </section>
+      <MortgageCalculator lang={lang} />
       <section className="shell search-panel" aria-labelledby="search-heading">
         <div className="section-head search-head"><h2 id="search-heading">{t.submit}</h2></div>
         <SearchForm lang={lang} home />

@@ -29,6 +29,16 @@ export async function generateMetadata({ params }: LayoutProps<"/[lang]">): Prom
   return {
     title: { default: "Property with Iki", template: "%s | Property with Iki" },
     description: lang === "zh" ? "Iki Chia 的柔佛房地产网站。" : "Johor property guidance from Iki Chia.",
+    icons: {
+      icon: [
+        { url: "/favicon.ico?v=iki-20261113-final", sizes: "16x16 32x32 48x48", type: "image/x-icon" },
+        { url: "/favicon-16x16.png?v=iki-20261113-final", sizes: "16x16", type: "image/png" },
+        { url: "/favicon-32x32.png?v=iki-20261113-final", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-192x192.png?v=iki-20261113-final", sizes: "192x192", type: "image/png" },
+        { url: "/favicon-512x512.png?v=iki-20261113-final", sizes: "512x512", type: "image/png" },
+      ],
+      apple: [{ url: "/apple-touch-icon.png?v=iki-20261113-final", sizes: "180x180", type: "image/png" }],
+    },
   };
 }
 

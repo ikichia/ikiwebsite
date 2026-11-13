@@ -1,0 +1,29 @@
+.mortgage-section { background: var(--ivory); color: var(--navy); }
+.mortgage-heading { max-width: 700px; margin-bottom: 26px; }
+.mortgage-heading h2 { margin-bottom: 10px; }
+.mortgage-panel { display: grid; grid-template-columns: 1.1fr 1fr; border: 1px solid #c5a46d55; border-radius: 18px; overflow: hidden; box-shadow: 0 12px 35px #14263d08; }
+.mortgage-inputs { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 20px; padding: 32px; background: #fffdf9; }
+.mortgage-inputs > div { min-width: 0; }
+.mortgage-inputs label { display: block; font-size: .9rem; font-weight: 600; margin-bottom: 9px; }
+.mortgage-inputs input { width: 100%; min-width: 0; box-sizing: border-box; min-height: 50px; padding: 12px; border: 1px solid #14263d38; border-radius: 7px; background: white; color: var(--navy); font: inherit; font-size: 16px; }
+.mortgage-inputs input:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.mortgage-inputs input[aria-invalid] { border-color: #a13330; }
+.mortgage-hint,.mortgage-error { display: block; margin-top: 7px; font-size: .78rem; line-height: 1.5; }
+.mortgage-hint { color: #566171; }
+.mortgage-error { color: #a13330; }
+.mortgage-privacy { grid-column: 1/-1; font-size: .8rem; line-height: 1.6; margin: 0; color: #566171; }
+.mortgage-results { min-width: 0; background: var(--navy); color: var(--ivory); padding: 32px; }
+.mortgage-results p { color: inherit; margin-top: 0; }
+.mortgage-monthly { display: block; color: var(--gold); font-size: clamp(1.7rem,3vw,2.65rem); line-height: 1.25; font-weight: 600; margin: 12px 0 28px; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.mortgage-results dl { margin: 0; }
+.mortgage-results dl > div { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 16px; border-top: 1px solid #c5a46d40; padding: 16px 0; }
+.mortgage-results dt { font-size: .87rem; }
+.mortgage-results dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.mortgage-results .mortgage-assumption { font-size: .78rem; line-height: 1.7; margin: 15px 0 0; color: #e4dfd6; }
+.mortgage-disclaimer { font-size: .8rem; line-height: 1.75; color: #566171; max-width: 950px; margin: 20px 0 0; }
+@media (max-width: 767px) {
+  .mortgage-panel { grid-template-columns: 1fr; }
+  .mortgage-inputs { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
+  .mortgage-results { padding: 24px 22px; }
+  .mortgage-monthly { font-size: 2rem; }
+}
