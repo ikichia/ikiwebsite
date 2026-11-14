@@ -71,7 +71,6 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           </g>
         </svg>
       </section>
-      <MortgageCalculator lang={lang} />
       <section className="shell search-panel" aria-labelledby="search-heading">
         <div className="section-head search-head"><h2 id="search-heading">{t.submit}</h2></div>
         <SearchForm lang={lang} home />
@@ -86,6 +85,7 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
           <PropertyGrid lang={lang} items={featured} />
         </div>
       </section>}
+      <MortgageCalculator lang={lang} />
       <section id="about" className="shell section split-section">
         <p className="eyebrow"><span />{t.about}</p>
         <div><h2>{t.aboutTitle}</h2><p>{t.aboutText}</p><p>{t.aboutAreas}</p></div>
