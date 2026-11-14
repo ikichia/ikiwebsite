@@ -58,8 +58,8 @@ const publishedProperties: readonly PublicProperty[] = [
 export type PropertyQuery = Record<string, string | string[] | undefined>;
 
 export function readFilters(query: PropertyQuery) {
-  const deal = query.deal === "buy" || query.deal === "rent" ? query.deal : "";
-  const category = categories.find((item) => item === query.category) ?? "";
+  const deal = query.category === "room-rental" ? "rent" : query.deal === "buy" || query.deal === "rent" ? query.deal : "";
+  const category = query.category === "room-rental" ? "" : categories.find((item) => item === query.category) ?? "";
   const area = typeof query.area === "string" ? query.area.trim().slice(0, 80) : "";
   const rawBudget = typeof query.budget === "string" ? query.budget.trim() : "";
   const budget = /^\d{1,12}$/.test(rawBudget) && Number(rawBudget) > 0 ? String(Number(rawBudget)) : "";

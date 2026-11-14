@@ -22,7 +22,7 @@ export function SearchForm({ lang, filters, home = false }: {
       <label>{t.category}
         <select name="category" defaultValue={filters?.category ?? ""}>
           <option value="">{t.all}</option>
-          {categories.map((item) => <option key={item} value={item}>{t.categories[item]}</option>)}
+          {categories.map((item) => <option key={item} value={item}>{item === "room-rental" ? (lang === "zh" ? "出租房源" : "Rental Properties") : t.categories[item]}</option>)}
         </select>
       </label>
       <label>{t.budget}
@@ -67,8 +67,8 @@ export function CategoryGrid({ lang }: { lang: Locale }) {
   return (
     <div className="category-grid">
       {categories.map((item) => (
-        <Link key={item} href={{ pathname: `/${lang}/properties`, query: { category: item } }}>
-          <strong>{copy[lang].categories[item]}</strong><span aria-hidden="true">↗</span>
+        <Link key={item} href={{ pathname: `/${lang}/properties`, query: item === "room-rental" ? { deal: "rent" } : { category: item } }}>
+          <strong>{item === "room-rental" ? (lang === "zh" ? "出租房源" : "Rental Properties") : copy[lang].categories[item]}</strong><span aria-hidden="true">↗</span>
         </Link>
       ))}
     </div>

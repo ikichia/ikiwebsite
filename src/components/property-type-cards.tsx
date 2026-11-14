@@ -18,10 +18,10 @@ export function PropertyTypeCards({ lang }: { lang: Locale }) {
         <li key={category}>
           <Link
             className="property-type-card"
-            href={{ pathname: `/${lang}/properties`, query: { category } }}
+            href={{ pathname: `/${lang}/properties`, query: category === "room-rental" ? { deal: "rent" } : { category } }}
           >
             <Image
-              src={`/reference-categories/${category}.webp`}
+              src={`/reference-categories/${category === "room-rental" ? "rental-properties" : category}.webp`}
               alt=""
               width={199}
               height={91}
@@ -32,7 +32,7 @@ export function PropertyTypeCards({ lang }: { lang: Locale }) {
               <svg className="property-type-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d={icons[category]} stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <span>{lang === "zh" && category === "commercial" ? "店屋及商业产业" :
+              <span>{category === "room-rental" ? (lang === "zh" ? "出租房源" : "Rental Properties") : lang === "zh" && category === "commercial" ? "店屋及商业产业" :
                 lang === "zh" && category === "industrial" ? "工厂及仓库" : copy[lang].categories[category]}</span>
             </span>
           </Link>
