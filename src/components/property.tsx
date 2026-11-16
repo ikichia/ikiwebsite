@@ -39,26 +39,27 @@ export function PropertyGrid({ lang, items }: { lang: Locale; items: readonly Pu
   const number = new Intl.NumberFormat("en-MY");
   return (
     <div className="property-grid">
-      {items.map((item) => (
-        <article className="property-card" key={item.id}>
-          <a className="property-image" href={item.sourceUrl ?? whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`${item.title[lang]} — ${lang === "zh" ? "在新标签页查看" : "view in a new tab"}`}>
-            <Image src={item.photo} alt={item.title[lang]} fill sizes="(max-width: 640px) 95vw, (max-width: 960px) 48vw, 370px" />
-          </a>
-          <div className="card-content">
-            <p className="card-meta">{item.area[lang]} · {item.propertyType[lang]} · {item.deal === "buy" ? t.sale : t.rent}</p>
-            <h3><a href={item.sourceUrl ?? whatsappUrl} target="_blank" rel="noopener noreferrer">{item.title[lang]}</a></h3>
-            <p>{[
-              item.areaSqft !== undefined ? `${number.format(item.areaSqft)} sq ft` : undefined,
-              item.bedrooms !== undefined ? `${t.bedrooms}: ${item.bedrooms}` : undefined,
-              item.bathrooms !== undefined ? `${t.bathrooms}: ${item.bathrooms}` : undefined,
-            ].filter(Boolean).join(" · ")}</p>
-            {item.note && <p>{item.note[lang]}</p>}
-            <p className="price">RM {number.format(item.price)} {item.deal === "rent" && <small>{t.monthly}</small>}</p>
-            <a className="button" href={whatsappUrl}>{t.enquire}</a>
-            {item.sourceUrl && <a className="text-link" href={item.sourceUrl} target="_blank" rel="noopener noreferrer">{lang === "zh" ? "在 NextSix 查看详情" : "View on NextSix"} ↗</a>}
-          </div>
-        </article>
-      ))}
+      {items.map((item) => {
+        const href = `/${lang}/properties/${item.slug}`;
+        return (
+          <article className="property-card" key={item.id}>
+            <Link className="property-image" href={href} aria-label={item.title[lang]}>
+              <Image src={item.photo} alt={item.title[lang]} fill sizes="(max-width: 640px) 95vw, (max-width: 960px) 48vw, 370px" />
+            </Link>
+            <div className="card-content">
+              <p className="card-meta">{item.area[lang]} · {item.propertyType[lang]} · {item.deal === "buy" ? t.sale : t.rent}</p>
+              <h3><Link href={href}>{item.title[lang]}</Link></h3>
+              <p>{[
+                item.areaSqft !== undefined ? `${number.format(item.areaSqft)} sq ft` : undefined,
+                item.bedrooms !== undefined ? `${t.bedrooms}: ${item.bedrooms}` : undefined,
+                item.bathrooms !== undefined ? `${t.bathrooms}: ${item.bathrooms}` : undefined,
+              ].filter(Boolean).join(" · ")}</p>
+              <p className="price">RM {number.format(item.price)} {item.deal === "rent" && <small>{t.monthly}</small>}</p>
+              <a className="button" href={whatsappUrl}>{t.enquire}</a>
+            </div>
+          </article>
+        );
+      })}
     </div>
   );
 }

@@ -7,9 +7,12 @@ const nextConfig: NextConfig = {
       { source: "/properties", destination: "/en/properties", permanent: false },
     ];
   },
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io", pathname: "/images/**" }],
+  },
   turbopack: {
     rules: {
-      "*.css": {
+      "src/app/globals.css": {
         loaders: ["@tailwindcss/turbopack"],
         as: "*.css",
       },

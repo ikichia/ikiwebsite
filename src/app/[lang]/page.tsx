@@ -4,7 +4,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { OwnerForm } from "@/components/owner-form";
 import { MortgageCalculator } from "@/components/mortgage-calculator";
-import { NextSixListings } from "@/components/nextsix-listings";
 import { PropertyGrid, SearchForm } from "@/components/property";
 import { PropertyTypeCards } from "@/components/property-type-cards";
 import { areaGuides } from "@/lib/areas";
@@ -74,17 +73,16 @@ export default async function Home({ params }: PageProps<"/[lang]">) {
       <section className="shell search-panel" aria-labelledby="search-heading">
         <div className="section-head search-head"><h2 id="search-heading">{t.submit}</h2></div>
         <SearchForm lang={lang} home />
-        <NextSixListings lang={lang} hasLocalListings={properties.length > 0} />
       </section>
       <section className="shell section category-section">
         <h2>{t.categoryTitle}</h2><PropertyTypeCards lang={lang} />
       </section>
-      {featured.length > 0 && <section className="type-section section home-featured">
+      <section className="type-section section home-featured">
         <div className="shell">
           <div className="section-head"><h2>{t.featured}</h2><Link className="text-link" href={`${base}/properties`}>{t.viewAll} ↗</Link></div>
-          <PropertyGrid lang={lang} items={featured} />
+          {featured.length > 0 ? <PropertyGrid lang={lang} items={featured} /> : <p className="empty-state">{t.emptyFeatured}</p>}
         </div>
-      </section>}
+      </section>
       <MortgageCalculator lang={lang} />
       <section id="about" className="shell section split-section">
         <p className="eyebrow"><span />{t.about}</p>

@@ -483,14 +483,6 @@ h3 { font-size: 1.45rem; }
   .home-page .property-type-label { font-size: clamp(.85rem,3.5vw,1.06rem); }
 }
 
-.nextsix-listings { grid-column: 1 / -1; display: flex; align-items: center; gap: 16px; border-top: 1px solid #d8b77a55; padding-top: 14px; margin-top: 12px; }
-.nextsix-listings p { margin: 0; flex: 1; font-size: .85rem; line-height: 1.6; color: var(--navy); }
-.nextsix-listings .button { flex: none; font-size: .88rem; }
-@media (width < 768px) {
-  .nextsix-listings { flex-direction: column; align-items: stretch; gap: 10px; }
-  .nextsix-listings .button { text-align: center; }
-}
-
 @media (768px <= width < 1050px) {
   .home-page .search-form { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
   .home-page .search-form .button { grid-column: 1 / -1; }

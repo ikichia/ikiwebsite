@@ -10,7 +10,6 @@ export type Category = (typeof categories)[number];
 
 export const whatsappUrl = "https://wa.me/message/PZMUBCIW7OBUM1";
 export const facebookUrl = "https://www.facebook.com/JBPROPERTY.IKI";
-export const nextsixProfileUrl = "https://nextsix.com/agent/iki-chia/6ab0fdc168250306f89e9862";
 
 // WhatsApp click-to-chat needs a phone number to carry a custom message.
 export function whatsappDraft(message: string) {
@@ -29,8 +28,8 @@ export const copy = {
     budget: "Maximum Budget (RM)", budgetHint: "Sale price or monthly rent", submit: "Search Properties", filter: "Apply Filters",
     categories: { residential: "Residential", "room-rental": "Room Rental", commercial: "Commercial", industrial: "Industrial", land: "Land", "new-projects": "New Projects" },
     categoryTitle: "Explore by Property Type", featured: "Featured Properties", viewAll: "View All Properties",
-    emptyFeatured: "There are no featured properties published yet.", empty: "There are no published properties yet.",
-    emptyFiltered: "No published properties match these filters.", results: "Matching properties", reset: "Clear Filters",
+    emptyFeatured: "No featured properties are available at the moment.", empty: "No properties are available at the moment. Please check back for new listings.",
+    emptyFiltered: "No properties match your search. Try adjusting or clearing the filters.", results: "Matching properties", reset: "Clear Filters",
     listingIntro: "Browse published listings in Johor and narrow your search by location, property type and budget.",
     monthly: "/ month", bedrooms: "Bedrooms", bathrooms: "Bathrooms", enquire: "Enquire on WhatsApp",
     aboutTitle: "A local perspective. A personal approach.",
@@ -54,8 +53,8 @@ export const copy = {
     budget: "最高预算（RM）", budgetHint: "售价或月租", submit: "搜索房源", filter: "应用筛选",
     categories: { residential: "住宅", "room-rental": "房间出租", commercial: "店屋／商业产业", industrial: "工厂", land: "地皮", "new-projects": "新楼盘" },
     categoryTitle: "按物业类型浏览", featured: "精选房源", viewAll: "查看全部房源",
-    emptyFeatured: "目前暂无已发布的精选房源。", empty: "目前暂无已发布的房源。",
-    emptyFiltered: "没有符合筛选条件的已发布房源。", results: "符合条件的房源", reset: "清除筛选",
+    emptyFeatured: "目前暂无精选房源。", empty: "目前暂无可浏览的房源，欢迎稍后查看最新发布。",
+    emptyFiltered: "未找到符合条件的房源，请调整或清除筛选条件。", results: "符合条件的房源", reset: "清除筛选",
     listingIntro: "浏览已发布的柔佛房源，可按地区、物业类型和预算缩小范围。",
     monthly: "/ 月", bedrooms: "房间", bathrooms: "浴室", enquire: "WhatsApp 咨询",
     aboutTitle: "熟悉柔佛，也重视你的需求。",
