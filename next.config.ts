@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
 
+import { studioDataset, studioProjectId, validateSanityConfig } from "./src/sanity/settings";
+
+validateSanityConfig(studioProjectId, studioDataset, process.env.VERCEL_ENV, process.env.VERCEL);
+
 const nextConfig: NextConfig = {
   async redirects() {
     return [

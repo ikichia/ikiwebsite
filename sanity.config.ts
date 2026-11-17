@@ -3,10 +3,10 @@ import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
 import { property } from "./src/sanity/schema/property";
 import { reviewedPublish } from "./src/sanity/actions";
-import { studioConfigured, studioDataset, studioProjectId } from "./src/sanity/settings";
+import { studioDataset, studioProjectId } from "./src/sanity/settings";
 
-export default studioConfigured ? defineConfig({
-  name: "iki-testing", title: "Property with Iki — PUBLIC DATA ONLY / 仅限公开资料",
+export default defineConfig({
+  name: "iki-properties", title: "Property with Iki — PUBLIC DATA ONLY / 仅限公开资料",
   projectId: studioProjectId, dataset: studioDataset, basePath: "/studio",
   plugins: [structureTool()], schema: { types: [property] },
   document: {
@@ -15,4 +15,4 @@ export default studioConfigured ? defineConfig({
       .filter(action => action.action !== "duplicate")
       .map(action => action.action === "publish" ? reviewedPublish(action) : action),
   },
-}) : null;
+});

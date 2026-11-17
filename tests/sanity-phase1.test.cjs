@@ -41,7 +41,7 @@ test('public listing reader reflects published changes and keeps an empty CMS em
     return Response.json({result: published});
   });
   const reader = importTs('src/sanity/public-reader.ts', {
-    './settings': {studioConfigured: true, studioProjectId: 'example', studioDataset: 'testing', apiVersion: '2026-11-01'},
+    './settings': {validateSanityConfig: importTs('src/sanity/settings.ts', {}).validateSanityConfig, studioProjectId: 'example', studioDataset: 'testing', apiVersion: '2026-11-01'},
     './images': {marketingImageUrl: photo => photo.asset._ref},
     './public-model': {toPublicProperty},
     './queries': {publishedPropertyQuery: query},
@@ -81,4 +81,17 @@ test('public listing reader reflects published changes and keeps an empty CMS em
   assert.equal(all.length, 2);
   assert.equal(all[0].slug, record.slug.current);
   assert.equal(all[1].category, 'commercial');
+});
+test('Sanity dataset matches the deployment environment', () => {
+  const {validateSanityConfig} = importTs('src/sanity/settings.ts', {});
+  const validate = (environment, dataset) => validateSanityConfig('c3sa9z6o', dataset, environment);
+  assert.doesNotThrow(() => validate('production', 'production'));
+  assert.doesNotThrow(() => validate('preview', 'testing'));
+  assert.throws(() => validate('production', 'testing'), /production.*requires.*production/);
+  assert.throws(() => validate('preview', 'production'), /preview.*requires.*testing/);
+  assert.throws(() => validate('production', undefined), /NEXT_PUBLIC_SANITY_DATASET is required/);
+  assert.throws(() => validate('preview', 'staging'), /production.*testing|testing.*production/);
+  assert.doesNotThrow(() => validate(undefined, 'testing'));
+  assert.throws(() => validate(undefined, 'production'), /development.*requires.*testing/);
+  assert.throws(() => validateSanityConfig('c3sa9z6o', 'testing', undefined, '1'), /VERCEL_ENV is required/);
 });

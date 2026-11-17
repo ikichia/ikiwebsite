@@ -2,10 +2,10 @@ import { cache } from "react";
 import { marketingImageUrl } from "./images";
 import { toPublicProperty, type PropertyRecord } from "./public-model";
 import { publishedPropertyQuery } from "./queries";
-import { apiVersion, studioConfigured, studioDataset, studioProjectId } from "./settings";
+import { apiVersion, studioDataset, studioProjectId, validateSanityConfig } from "./settings";
 
 export const readSanityListings = cache(async () => {
-  if (!studioConfigured) return [];
+  validateSanityConfig(studioProjectId, studioDataset, process.env.VERCEL_ENV, process.env.VERCEL);
 
   const endpoint = new URL(`https://${studioProjectId}.api.sanity.io/v${apiVersion}/data/query/${studioDataset}`);
   endpoint.searchParams.set("query", publishedPropertyQuery);
